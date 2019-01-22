@@ -32,9 +32,11 @@ fi
 if test "${USER_ID}" = 0; then
     # current user is root
     /usr/sbin/sshd -D &
+    /usr/bin/apt-get update
 elif sudo -n true > /dev/null 2>&1; then
     # current user is a suoder
     sudo /usr/sbin/sshd -D &
+    sudo /usr/bin/apt-get update
 fi
 
 exec "$@"
